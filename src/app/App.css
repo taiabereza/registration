@@ -1,3 +1,104 @@
-body {  
-  background-color:burlywood;
+body {
+  background-color: var(--palette-color-2);
+  color: var(--palette-color-5);
+}
+
+body * {
+  font-size: 1.125rem;
+  line-height: 1;
+  font-family: "Exo 2", sans-serif;
+}
+
+/* input,
+button,
+textarea {
+  font-family: "Exo 2", sans-serif;
+  font-size: inherit;
+} */
+
+header {
+  margin: 3%;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+header h2 {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+
+.button-nav {
+  border-color: var(--palette-color-5);
+  color: var(--palette-color-5);
+}
+
+.button-nav:hover, .btn-group>.button-nav:active {
+  background-color: var(--palette-color-5);
+}
+
+.button-nav:disabled {
+  border-color: var(--palette-color-5);
+  color: var(--palette-color-4);
+}
+
+.button-submit {
+  background-color: var(--palette-color-4);
+}
+
+.form-container {
+  text-align: center;
+}
+
+.form {
+  border-radius: 5px;
+}
+
+.form-left, .form-right {
+  text-align: center;
+}
+
+.form-left>*, .form-right>*{
+  width: 100%;
+} 
+
+.form-row {
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .form-left {
+    order: 1;
+  }
+}
+
+.form-row>.form-left-order {
+  order: 1;
+}
+
+.form-wrapper {
+  background-color: var(--palette-color-4);
+  border-radius: 10px;
+}
+
+.form-float-input {
+  background-color: var(--palette-color-3);
+  border-color: var(--palette-color-5);
+  color: var(--palette-color-5);
+}
+
+.form-float-input+label {
+  color: var(--palette-color-5);
+}
+
+.form-float-input:focus {
+  background-color: var(--palette-color-3);
+  border-color: var(--palette-color-5);
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 10%);
+  color: var(--palette-color-5);
 }
