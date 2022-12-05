@@ -10,11 +10,26 @@ import FormThirdScreen from './components/FormThirdScreen';
 import FormFourthScreen from './components/FormFourthScreen';
 import FormFifthScreen from './components/FormFifthScreen';
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [alertInvalid, setAlertInvalid] = useState(false);
+  const [isThemeLight, setIsThemeLight] = useState(true);
+
+  const handleThemeSwitch = () => {
+    setIsThemeLight(() => !isThemeLight);
+  }
+
+  useEffect(() => {
+    if (isThemeLight) {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+    } else {
+      document.body.classList.remove('light')
+      document.body.classList.add('dark');
+    }
+  }, [isThemeLight])
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -89,16 +104,12 @@ function App() {
             </header>
           </Col>
         </Row>
-        <Form>
           <Form.Check
             type="switch"
             id="themeSwitch"
-            label="Світла тема"
-            onChange={(e) => {
-              
-            }}
+            label={(isThemeLight) ? 'Світла тема' : 'Темна тема'}
+            onChange={() => {handleThemeSwitch()}}
           />
-        </Form>
         <form name="main-form" className="form-container" onSubmit={(e) => {
           handleOnSubmit(e)
         }}>

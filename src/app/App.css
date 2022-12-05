@@ -9,12 +9,10 @@ body * {
   font-family: "Exo 2", sans-serif;
 }
 
-/* input,
-button,
-textarea {
-  font-family: "Exo 2", sans-serif;
-  font-size: inherit;
-} */
+.main-container{
+  display: flex;
+  flex-direction: column;
+}
 
 header {
   margin: 3%;
@@ -37,7 +35,8 @@ header h2 {
   color: var(--palette-color-5);
 }
 
-.button-nav:hover, .btn-group>.button-nav:active {
+.button-nav:hover,
+.btn-group>.button-nav:active {
   background-color: var(--palette-color-5);
 }
 
@@ -48,6 +47,29 @@ header h2 {
 
 .button-submit {
   background-color: var(--palette-color-4);
+  color: var(--palette-color-1);
+}
+
+.form-switch {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  gap: 9px;
+}
+
+.form-switch label {
+  user-select: none;
+}
+
+.form-check-input:checked {
+  background-color: var(--palette-color-5);
+  border-color: var(--palette-color-5);
+}
+
+.form-check-input:focus {
+  border-color: var(--palette-color-3);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
 }
 
 .form-container {
@@ -58,13 +80,15 @@ header h2 {
   border-radius: 5px;
 }
 
-.form-left, .form-right {
+.form-left,
+.form-right {
   text-align: center;
 }
 
-.form-left>*, .form-right>*{
+.form-left>*,
+.form-right>* {
   width: 100%;
-} 
+}
 
 .form-row {
   align-items: center;

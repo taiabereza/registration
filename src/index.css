@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
 /* LIGHT MODE PALETTE */
-* {
+body.light {
     --palette-color-1: #f6f6f3;
     --palette-color-2: #bfb6b2;
     --palette-color-3: #c3beba;
@@ -11,7 +11,7 @@
 
 /* DARK MODE PALETTE */
 
-* {
+body.dark {
     --palette-color-1: #c0c1b4;
     --palette-color-2: #231f1d;
     --palette-color-3: #524a3b;
