@@ -3,10 +3,12 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import AlertValid from './AlertValid';
+
 import bird from './../img/stickebird-5.png';
 import Buttons from './Buttons';
 
-export default function FormFifthScreen({ formState, setFormState, formScreen, setFormScreen }) {
+export default function FormFifthScreen({ formState, setFormState, formScreen, setFormScreen, alertInvalid, setAlertInvalid }) {
 
     const { secondLang, about } = formState;
 
@@ -15,6 +17,8 @@ export default function FormFifthScreen({ formState, setFormState, formScreen, s
             ...formState,
             [e.target.name]: e.target.value
         })
+        setAlertInvalid(false);
+        e.target.classList.remove('alert-border');
     }
 
     return (
@@ -28,7 +32,7 @@ export default function FormFifthScreen({ formState, setFormState, formScreen, s
                             value={secondLang}
                             onChange={(e) => handleOnChange(e)}
                         >
-                            <option value="" style={{display:"none"}}>Друга мова, яку я знаю</option>
+                            <option value="" style={{ display: "none" }}>Друга мова, яку я знаю</option>
                             <option value="Не спілкуюся іншими мовами">Не спілкуюся іншими мовами</option>
                             <option value="Англійська">Англійська</option>
                             <option value="Іспанська">Іспанська</option>
@@ -50,6 +54,7 @@ export default function FormFifthScreen({ formState, setFormState, formScreen, s
                             />
                         </FloatingLabel>
                     </div>
+                    <AlertValid alertInvalid={alertInvalid} />
                     <Buttons
                         formScreen={formScreen}
                         setFormScreen={setFormScreen}

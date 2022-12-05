@@ -3,18 +3,36 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import AlertValid from './AlertValid';
+
+import { useState } from 'react';
+
+
 import bird from './../img/stickebird-4.png';
 import Buttons from './Buttons';
 
-export default function FormFourthScreen({ formState, setFormState, formScreen, setFormScreen }) {
+export default function FormFourthScreen({ formState, setFormState, formScreen, setFormScreen, alertInvalid, setAlertInvalid }) {
 
     const { country, city, address } = formState;
 
-    const handleOnChange = (e) => {
-        setFormState({
-            ...formState,
-            [e.target.name]: e.target.value
-        })
+	const handleOnChange = (e) => {
+		setFormState({
+			...formState,
+			[e.target.name]: e.target.value
+		})
+		setAlertInvalid(false);
+		e.target.classList.remove('alert-border');
+	}
+
+    const handleClickNext = () => {
+        const inputSet = document.querySelectorAll('.form-float-input');
+				const invalidInputs = [...inputSet].filter(input => input.value === '');
+        if (invalidInputs.length !== 0) {
+            inputSet.forEach(input => (input.value === '') ? input.classList.add('alert-border') : null);
+            setAlertInvalid(true);
+        } else {
+            setFormScreen(formScreen += 1);
+        }
     }
 
     return (
@@ -61,9 +79,11 @@ export default function FormFourthScreen({ formState, setFormState, formScreen, 
                             />
                         </FloatingLabel>
                     </div>
+                    <AlertValid alertInvalid={alertInvalid} />
                     <Buttons
                         formScreen={formScreen}
                         setFormScreen={setFormScreen}
+                        handleClickNext={handleClickNext}
                     />
                 </Col>
                 <Col md={7} className="form-right">

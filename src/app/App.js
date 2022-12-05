@@ -1,6 +1,7 @@
 import './App.css';
 
 import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormFirstScreen from './components/FormFirstScreen';
@@ -13,8 +14,22 @@ import { useState } from 'react';
 
 function App() {
 
+  const [alertInvalid, setAlertInvalid] = useState(false);
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const inputSet = document.querySelectorAll('.form-float-input');
+    const invalidInputs = [...inputSet].filter(input => input.value === '');
+    if (invalidInputs.length !== 0) {
+      inputSet.forEach(input => (input.value === '') ? input.classList.add('alert-border') : null);
+      setAlertInvalid(true);
+    } else {
+      console.dir(formState);
+    }
+  }
+
   const [formState, setFormState] = useState({
-    login: '', email: '', password: '', firstName: '', lastName: '', birthDate: '', sex: '', education: '', workplace: '', position: '', phone: '',  country: '', city: '', address: '', secondLang: '', about: ''
+    login: '', email: '', password: '', firstName: '', lastName: '', birthDate: '', sex: '', education: '', workplace: '', position: '', phone: '', country: '', city: '', address: '', secondLang: '', about: ''
   });
 
   const [formScreen, setFormScreen] = useState(0);
@@ -25,30 +40,40 @@ function App() {
       setFormState={setFormState}
       formScreen={formScreen}
       setFormScreen={setFormScreen}
+      alertInvalid={alertInvalid}
+      setAlertInvalid={setAlertInvalid}
     />,
     <FormSecondScreen
       formState={formState}
       setFormState={setFormState}
       formScreen={formScreen}
       setFormScreen={setFormScreen}
+      alertInvalid={alertInvalid}
+      setAlertInvalid={setAlertInvalid}
     />,
     <FormThirdScreen
       formState={formState}
       setFormState={setFormState}
       formScreen={formScreen}
       setFormScreen={setFormScreen}
+      alertInvalid={alertInvalid}
+      setAlertInvalid={setAlertInvalid}
     />,
     <FormFourthScreen
       formState={formState}
       setFormState={setFormState}
       formScreen={formScreen}
       setFormScreen={setFormScreen}
+      alertInvalid={alertInvalid}
+      setAlertInvalid={setAlertInvalid}
     />,
     <FormFifthScreen
       formState={formState}
       setFormState={setFormState}
       formScreen={formScreen}
       setFormScreen={setFormScreen}
+      alertInvalid={alertInvalid}
+      setAlertInvalid={setAlertInvalid}
     />
   ]
 
@@ -64,9 +89,18 @@ function App() {
             </header>
           </Col>
         </Row>
+        <Form>
+          <Form.Check
+            type="switch"
+            id="themeSwitch"
+            label="Світла тема"
+            onChange={(e) => {
+              
+            }}
+          />
+        </Form>
         <form name="main-form" className="form-container" onSubmit={(e) => {
-          e.preventDefault();
-          console.dir(formState);
+          handleOnSubmit(e)
         }}>
           {componentsArr[formScreen]}
           {(formScreen === 4)
