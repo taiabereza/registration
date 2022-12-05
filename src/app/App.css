@@ -77,6 +77,10 @@ header h2 {
   }
 }
 
+.form-float-input.alert-border {
+  border-color: red;
+}
+
 .form-row>.form-left-order {
   order: 1;
 }
